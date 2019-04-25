@@ -5,8 +5,20 @@ class AddRecipe extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      recipeList: [],
+      recipeName: '',
+      mealType: '',
+      level: '',
+      imgUrl: '',
+      description: '',
       show: false
     };
+  }
+
+  handleAdd = (e) => {
+    this.setState(prevState => ({
+      recipeList: prevState.recipeList.concat()
+    }))
   }
 
   handleClose = () => {
@@ -21,7 +33,10 @@ class AddRecipe extends Component {
     return (
       <div>
         <i className="fas fa-plus add-recipe" onClick={this.handleShow}/>
-        <ShowModal show={this.state.show} hide={this.handleClose} />
+        <ShowModal 
+          show={this.state.show} 
+          hide={this.handleClose} 
+          handleAdd={this.handleAdd}/>
       </div>
     );
   }

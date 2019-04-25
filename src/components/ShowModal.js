@@ -1,4 +1,5 @@
 import React from 'react';
+import FormControl from './Formcontrol';
 import { Modal, Button } from 'react-bootstrap';
 
 const ShowModal = props => {
@@ -6,9 +7,11 @@ const ShowModal = props => {
     <div>
       <Modal show={props.show} onHide={props.hide}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add your recipe ✍</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <FormControl handleAdd={props.handleAdd}/>
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={props.hide}>
             Close
