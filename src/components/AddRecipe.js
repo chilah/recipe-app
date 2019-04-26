@@ -6,11 +6,6 @@ class AddRecipe extends Component {
     super(props);
     this.state = {
       recipeList: [],
-      recipeName: '',
-      mealType: '',
-      level: '',
-      imgUrl: '',
-      description: '',
       show: false
     };
   }
