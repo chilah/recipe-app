@@ -10,9 +10,17 @@ class AddRecipe extends Component {
     };
   }
 
-  handleAdd = (e) => {
+  handleAddRecipe = (data) => {
+    const recipeBox = {
+      recipeName: data.recipeName,
+      imgUrl: data.imgUrl,
+      mealType: data.mealType,
+      level: data.level,
+      description: data.description,
+    }
+
     this.setState(prevState => ({
-      recipeList: prevState.recipeList.concat()
+      recipeList: prevState.recipeList.concat(recipeBox)
     }))
   }
 
@@ -27,11 +35,12 @@ class AddRecipe extends Component {
   render() {
     return (
       <div>
+        {console.log(this.state.recipeList)}
         <i className="fas fa-plus add-recipe" onClick={this.handleShow}/>
         <ShowModal 
           show={this.state.show} 
           hide={this.handleClose} 
-          handleAdd={this.handleAdd}/>
+          handleAddRecipe={this.handleAddRecipe}/>
       </div>
     );
   }
