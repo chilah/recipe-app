@@ -1,27 +1,29 @@
-import React from 'react';
-import Header from './Header'
-import AddRecipe from './AddRecipe'
+import React from "react";
+import Header from "./Header";
+import AddRecipe from "./AddRecipe";
+import Main from "./Main";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      text: ''
-    }
+      text: ""
+    };
   }
 
   handleClick = () => {
-    console.log('Hi');
-  }
+    console.log("Hi");
+  };
 
   render() {
     return (
       <div>
         <Header />
         <AddRecipe />
-    </div>
-    )
+        <Main />
+      </div>
+    );
   }
 }
 
-export default App
+export default App;

@@ -14,7 +14,7 @@ class FormControl extends Component {
     };
   }
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
 
     this.setState(prevState => ({
@@ -22,9 +22,9 @@ class FormControl extends Component {
     }));
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
-    
+
     this.props.handleAddRecipe(this.state);
     this.props.hide();
   };
@@ -96,11 +96,7 @@ class FormControl extends Component {
           <Button variant="dark" className="ml-auto" onClick={this.props.hide}>
             Cancel
           </Button>
-          <Button
-            type="submit"
-            variant="primary"
-            className="ml-3"
-          >
+          <Button type="submit" className="btn-submit ml-3">
             Add Recipe
           </Button>
         </ButtonToolbar>

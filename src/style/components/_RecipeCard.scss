@@ -1,0 +1,13 @@
+.card-main {
+  width: 100%;
+
+  @media (min-width: 768px) and (max-width: 995px) {
+    width: 45%;
+    margin: 2.5%;
+  }
+
+  @media (min-width: 996px) {
+    width: 30%;
+    margin: 1.6%;
+  }
+}
