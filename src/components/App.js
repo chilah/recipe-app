@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./Header";
 import AddRecipe from "./AddRecipe";
-import Main from "./Main";
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +19,6 @@ class App extends React.Component {
       <div>
         <Header />
         <AddRecipe />
-        <Main />
       </div>
     );
   }

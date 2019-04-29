@@ -24,16 +24,28 @@ class FormControl extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { recipeName, mealType, level } = this.state;
 
-    this.props.handleAddRecipe(this.state);
-    this.props.hide();
+    if (recipeName.length < 20 && mealType && level) {
+      this.props.handleAddRecipe(this.state);
+      this.props.hide();
+    } else {
+      this.setState(prevState => ({
+        warningMessage: true
+      }));
+    }
   };
 
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+        {this.state.warningMessage && (
+          <h5 className="text-center" style={{ color: "red" }}>
+            Please fill at least in the * form
+          </h5>
+        )}
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Recipe name</Form.Label>
+          <Form.Label>Recipe name*</Form.Label>
           <Form.Control
             type="text"
             placeholder="Add your recipe name"
@@ -53,7 +65,7 @@ class FormControl extends Component {
           />
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlSelect1">
-          <Form.Label>Meal type</Form.Label>
+          <Form.Label>Meal type*</Form.Label>
           <Form.Control
             as="select"
             name="mealType"
@@ -68,7 +80,7 @@ class FormControl extends Component {
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlSelect2">
-          <Form.Label>Dificult level</Form.Label>
+          <Form.Label>Dificult level*</Form.Label>
           <Form.Control
             as="select"
             name="level"

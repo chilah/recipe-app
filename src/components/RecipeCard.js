@@ -1,20 +1,16 @@
 import React from "react";
-import { Card, Button, Col } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
-const RecipeCard = () => {
+const RecipeCard = (props) => {
   return (
     <Card className="card-main">
       <Card.Img
         variant="top"
-        src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        src={props.data.imgUrl}
       />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button className="btn-submit">Go somewhere</Button>
+        <Card.Title>{props.data.recipeName}</Card.Title>
+        <Button className="btn-submit">More datail</Button>
       </Card.Body>
     </Card>
   );
