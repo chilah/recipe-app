@@ -1,19 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
 import { Card, Button } from "react-bootstrap";
+import EditModal from './EditModal';
 
-const RecipeCard = (props) => {
-  return (
-    <Card className="card-main">
-      <Card.Img
-        variant="top"
-        src={props.data.imgUrl}
-      />
-      <Card.Body>
-        <Card.Title>{props.data.recipeName}</Card.Title>
-        <Button className="btn-submit">More datail</Button>
-      </Card.Body>
-    </Card>
-  );
-};
+class RecipeCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <Card className="card-main">
+        <Card.Img variant="top" src={this.props.data.imgUrl} />
+        <Card.Body>
+          <Card.Title>{this.props.data.recipeName}</Card.Title>
+          <EditModal data={this.props.data}/>
+        </Card.Body>
+      </Card>
+    );
+  }
+}
 
 export default RecipeCard;
