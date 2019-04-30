@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Modal, ButtonToolbar, Button, Jumbotron } from "react-bootstrap";
 
+
 export class EditModal extends Component {
   constructor(props, context) {
     super(props, context);
@@ -17,6 +18,7 @@ export class EditModal extends Component {
         <Button className="btn-submit" onClick={() => this.setState({ lgShow: true })}>
           Preview
         </Button>
+        <Button variant="dark" className="ml-auto" onClick={this.props.handleDelete}><i className="fas fa-trash-alt"></i></Button>
         <Modal
           size="lg"
           show={this.state.lgShow}
