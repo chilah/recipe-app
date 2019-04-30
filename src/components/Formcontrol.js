@@ -9,6 +9,7 @@ class FormControl extends Component {
       imgUrl: "",
       mealType: "",
       level: "",
+      ingrediants: '',
       description: "",
       warningMessage: false
     };
@@ -94,6 +95,17 @@ class FormControl extends Component {
           </Form.Control>
         </Form.Group>
         <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Ingrediants</Form.Label>
+          <Form.Control
+            as="textarea"
+            name="ingrediants"
+            rows="3"
+            placeholder="Add your ingrediants"
+            onChange={this.handleChange}
+            value={this.state.ingrediants}
+          />
+        </Form.Group>
+        <Form.Group controlId="exampleForm.ControlTextarea2">
           <Form.Label>Description</Form.Label>
           <Form.Control
             as="textarea"
