@@ -14,8 +14,8 @@ export class EditModal extends Component {
 
     return (
       <ButtonToolbar>
-        <Button onClick={() => this.setState({ lgShow: true })}>
-          More detail
+        <Button className="btn-submit" onClick={() => this.setState({ lgShow: true })}>
+          Preview
         </Button>
         <Modal
           size="lg"
