@@ -1,6 +1,6 @@
 import React from 'react';
 import FormControl from './Formcontrol';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 
 const ShowModal = props => {
   return (
@@ -10,16 +10,8 @@ const ShowModal = props => {
           <Modal.Title>Add your recipe ✍</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <FormControl handleAdd={props.handleAdd}/>
+          <FormControl hide={props.hide} handleAddRecipe={props.handleAddRecipe}/>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={props.hide}>
-            Close
-          </Button>
-          <Button className="savechange" onClick={props.hide}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );

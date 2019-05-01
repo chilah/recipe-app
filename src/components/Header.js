@@ -4,7 +4,7 @@ import { Container } from "react-bootstrap";
 function Header() {
   return (
     <header>
-      <h1>Recipe App</h1>
+      <h1>Recipe Book</h1>
     </header>
   );
 }
