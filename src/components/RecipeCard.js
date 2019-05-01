@@ -13,7 +13,7 @@ class RecipeCard extends Component {
         <Card.Img variant="top" src={this.props.data.imgUrl} />
         <Card.Body>
           <Card.Title>{this.props.data.recipeName}</Card.Title>
-          <EditModal data={this.props.data} />
+          <EditModal data={this.props.data} handleDelete={this.props.handleDelete}/>
         </Card.Body>
       </Card>
     );

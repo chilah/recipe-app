@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Header from './Header'
+import Header from "./Header";
 import ShowModal from "./ShowModal";
 import Main from "./Main";
 
@@ -32,9 +32,10 @@ class App extends Component {
     }
   }
 
-  handleApp = data => {
+  handleAddRecipe = data => {
     const recipeBox = {
       recipeName: data.recipeName,
+      id: data.id,
       imgUrl:
         data.imgUrl ||
         "https://images.unsplash.com/photo-1493807402946-1a3fe6683ff2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
@@ -49,9 +50,10 @@ class App extends Component {
     }));
   };
 
-  handleDelete = index => {
+  handleDelete = id => {
+    console.log("clicked");
     this.setState(prevState => ({
-      recipeList: this.state.recipeList.filter(recipe => recipe !== index)
+      recipeList: prevState.recipeList.filter(recipe => recipe.id !== id)
     }));
   };
 
@@ -71,12 +73,9 @@ class App extends Component {
         <ShowModal
           show={this.state.show}
           hide={this.handleClose}
-          handleApp={this.handleApp}
+          handleAddRecipe={this.handleAddRecipe}
         />
-        <Main 
-          data={this.state.recipeList} 
-          handleDelete={this.handleDelete}
-        />
+        <Main data={this.state.recipeList} handleDelete={this.handleDelete} />
       </div>
     );
   }

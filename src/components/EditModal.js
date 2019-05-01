@@ -18,7 +18,7 @@ export class EditModal extends Component {
         <Button className="btn-submit" onClick={() => this.setState({ lgShow: true })}>
           Preview
         </Button>
-        <Button variant="dark" className="ml-auto" onClick={this.props.handleDelete}><i className="fas fa-trash-alt"></i></Button>
+        <Button variant="dark" className="ml-auto" onClick={() => this.props.handleDelete(this.props.data.id)}><i className="fas fa-trash-alt"></i></Button>
         <Modal
           size="lg"
           show={this.state.lgShow}

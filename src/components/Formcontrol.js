@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import uuid from "uuid/v4";
 import { Form, ButtonToolbar, Button } from "react-bootstrap";
 
 class FormControl extends Component {
@@ -6,10 +7,11 @@ class FormControl extends Component {
     super(props);
     this.state = {
       recipeName: "",
+      id: uuid(),
       imgUrl: "",
       mealType: "",
       level: "",
-      ingrediants: '',
+      ingrediants: "",
       description: "",
       warningMessage: false
     };
