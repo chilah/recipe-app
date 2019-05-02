@@ -51,7 +51,6 @@ class App extends Component {
   };
 
   handleDelete = id => {
-    console.log("clicked");
     this.setState(prevState => ({
       recipeList: prevState.recipeList.filter(recipe => recipe.id !== id)
     }));

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Modal, ButtonToolbar, Button, Jumbotron } from "react-bootstrap";
-
+import { Modal, ButtonToolbar, Button } from "react-bootstrap";
+import ReactMarkdown from 'react-markdown';
 
 export class EditModal extends Component {
   constructor(props, context) {
@@ -15,10 +15,19 @@ export class EditModal extends Component {
 
     return (
       <ButtonToolbar>
-        <Button className="btn-submit" onClick={() => this.setState({ lgShow: true })}>
+        <Button
+          className="btn-submit"
+          onClick={() => this.setState({ lgShow: true })}
+        >
           Preview
         </Button>
-        <Button variant="dark" className="ml-auto" onClick={() => this.props.handleDelete(this.props.data.id)}><i className="fas fa-trash-alt"></i></Button>
+        <Button
+          variant="dark"
+          className="ml-auto"
+          onClick={() => this.props.handleDelete(this.props.data.id)}
+        >
+          <i className="fas fa-trash-alt" />
+        </Button>
         <Modal
           size="lg"
           show={this.state.lgShow}
@@ -32,16 +41,18 @@ export class EditModal extends Component {
           </Modal.Header>
           <Modal.Body>
             <div className="img-size">
-              <img src={this.props.data.imgUrl} className="" />
+              <img src={this.props.data.imgUrl} />
             </div>
-            <Jumbotron className="mt-4">
-              <h5>Meal type: {this.props.data.mealType}</h5>
-              <h5>Level: {this.props.data.level}</h5>
+            <div className="mt-4">
+              <h5 className="text-center">
+                Meal type: {this.props.data.mealType} Level:{" "}
+                {this.props.data.level}
+              </h5>
               <h5>Ingredients</h5>
-              <p>{this.props.data.ingrediants}</p>
+              <ReactMarkdown>{this.props.data.ingrediants}</ReactMarkdown>
               <h5>Instructor</h5>
-              <p>{this.props.data.description}</p>
-            </Jumbotron>
+              <ReactMarkdown>{this.props.data.description}</ReactMarkdown>
+            </div>
           </Modal.Body>
         </Modal>
       </ButtonToolbar>
