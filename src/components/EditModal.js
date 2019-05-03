@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import FormControl from "./Formcontrol";
-import { Modal, ButtonToolbar, Button, Form } from "react-bootstrap";
+import { Modal, ButtonToolbar, Button, Form, Container, Row, Col } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 
 export class EditModal extends Component {
@@ -67,10 +66,12 @@ export class EditModal extends Component {
                 <img src={this.props.data.imgUrl} />
               </div>
               <div className="mt-4">
-                <h5 className="text-center">
-                  Meal type: {this.props.data.mealType} Level:{" "}
-                  {this.props.data.level}
-                </h5>
+                <Container className="text-center">
+                  <Row>
+                    <Col>Meal type: {this.props.data.mealType}</Col>
+                    <Col>Level: {this.props.data.level}</Col>
+                  </Row>
+                </Container>
                 <div className="main">
                   <h5>Ingredients</h5>
                   {!this.state.edit ? (
@@ -87,7 +88,7 @@ export class EditModal extends Component {
                       />
                     </Form.Group>
                   )}
-                  <h5>Instructor</h5>
+                  <h5>Method</h5>
                   {!this.state.edit ? (
                     <ReactMarkdown source={this.props.data.description} />
                   ) : (
@@ -105,7 +106,7 @@ export class EditModal extends Component {
                 </div>
               </div>
             </Modal.Body>
-            <Button onClick={this.handleClick}>Edit</Button>
+            <Button className="btn" onClick={this.handleClick}>{this.state.edit ? 'Done': 'Edit'}</Button>
           </Modal>
         </ButtonToolbar>
       </div>

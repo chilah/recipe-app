@@ -9,7 +9,6 @@ const Main = props => {
           key={index}
           data={list}
           handleDelete={props.handleDelete}
-          handleAddRecipe={props.handleAddRecipe}
           handleGetIndex={props.handleGetIndex}
           handleUpdateRecipe={props.handleUpdateRecipe}
         />

@@ -27,11 +27,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.recipeList.length !== this.state.recipeList.length) {
-      const json = JSON.stringify(this.state.recipeList);
-
-      localStorage.setItem("recipeList", json);
-    }
+    localStorage.setItem('recipeList', JSON.stringify(this.state.recipeList))
   }
 
   handleAddRecipe = data => {
@@ -67,8 +63,7 @@ class App extends Component {
     list.ingrediants = ingrediants;
     list.description = description;
     lists[i] = list;
-    // this.state.recipeList[i].ingrediants = ingrediants;
-    // this.state.recipeList[i].description = description;
+
     this.setState(prevState => ({
       recipeList: lists
     }));
@@ -100,7 +95,6 @@ class App extends Component {
         />
         <Main
           data={this.state.recipeList}
-          handleAddRecipe={this.handleAddRecipe}
           handleGetIndex={this.handleGetIndex}
           handleUpdateRecipe={this.handleUpdateRecipe}
           handleDelete={this.handleDelete}
