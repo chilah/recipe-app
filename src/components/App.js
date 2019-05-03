@@ -15,6 +15,7 @@ class App extends Component {
   componentDidMount() {
     try {
       const json = localStorage.getItem("recipeList");
+
       const recipeList = JSON.parse(json);
 
       if (recipeList) {
@@ -26,10 +27,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.recipeList.length !== this.state.recipeList.length) {
-      const json = JSON.stringify(this.state.recipeList);
-      localStorage.setItem("recipeList", json);
-    }
+    localStorage.setItem('recipeList', JSON.stringify(this.state.recipeList))
   }
 
   handleAddRecipe = data => {
@@ -50,8 +48,28 @@ class App extends Component {
     }));
   };
 
+  handleGetIndex = id => {
+    const i = this.state.recipeList.findIndex(recipe => {
+      if (recipe.id === id) return true;
+    });
+
+    return i;
+  };
+
+  handleUpdateRecipe = ({ingrediants, description}, id) => {
+    const i = this.handleGetIndex(id)
+    const lists = [...this.state.recipeList]
+    const list = {...lists[i]}
+    list.ingrediants = ingrediants;
+    list.description = description;
+    lists[i] = list;
+
+    this.setState(prevState => ({
+      recipeList: lists
+    }));
+  }
+
   handleDelete = id => {
-    console.log("clicked");
     this.setState(prevState => ({
       recipeList: prevState.recipeList.filter(recipe => recipe.id !== id)
     }));
@@ -75,7 +93,12 @@ class App extends Component {
           hide={this.handleClose}
           handleAddRecipe={this.handleAddRecipe}
         />
-        <Main data={this.state.recipeList} handleDelete={this.handleDelete} />
+        <Main
+          data={this.state.recipeList}
+          handleGetIndex={this.handleGetIndex}
+          handleUpdateRecipe={this.handleUpdateRecipe}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }

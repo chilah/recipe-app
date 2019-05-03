@@ -9,5 +9,20 @@
 
   img {
     width: 100%;
+    border-radius: 5px;
   }
+}
+
+.main {
+  padding: 2rem;
+}
+
+.input {
+  width: 250px;
+  height: 250px;
+}
+
+.btn {
+  background-color: $primary !important;
+  border: none !important;
 }
