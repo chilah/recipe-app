@@ -7,7 +7,7 @@ Where user can put any recipe they want. Let's cook!! 🔥
 - SASS/SCSS
 
 ## Preview 👀
-*Coming soon*
+- [Codesanbox](https://codesandbox.io/s/github/chilah/recipe-book)
 
 ## Feature ⚒
 - Add recipe with a name, img url, ingredient, and method.
