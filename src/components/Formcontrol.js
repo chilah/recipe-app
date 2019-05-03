@@ -101,8 +101,8 @@ class FormControl extends Component {
           <Form.Control
             as="textarea"
             name="ingrediants"
-            rows="3"
-            placeholder="Add your ingrediants"
+            rows="5"
+            placeholder="Add your ingrediants. *Press Enter twice to add a new line*"
             onChange={this.handleChange}
             value={this.state.ingrediants}
           />
@@ -112,8 +112,8 @@ class FormControl extends Component {
           <Form.Control
             as="textarea"
             name="description"
-            rows="3"
-            placeholder="Add your description"
+            rows="5"
+            placeholder="Add your description. *Press Enter twice to add a new line*"
             onChange={this.handleChange}
             value={this.state.description}
           />

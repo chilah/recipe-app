@@ -1,61 +1,114 @@
 import React, { Component } from "react";
-import { Modal, ButtonToolbar, Button } from "react-bootstrap";
-import ReactMarkdown from 'react-markdown';
+import FormControl from "./Formcontrol";
+import { Modal, ButtonToolbar, Button, Form } from "react-bootstrap";
+import ReactMarkdown from "react-markdown";
 
 export class EditModal extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      ingrediants: this.props.data.ingrediants,
+      description: this.props.data.description,
+      edit: false,
       lgShow: false
     };
   }
+
+  handleChange = e => {
+    const { name, value } = e.target;
+
+    this.setState(state => ({
+      [name]: value
+    }));
+  };
+
+  handleClick = () => {
+    if (this.state.edit) {
+      this.props.handleUpdateRecipe(this.state, this.props.data.id);
+    }
+
+    this.setState(state => ({
+      edit: !state.edit
+    }));
+  };
 
   render() {
     let lgClose = () => this.setState({ lgShow: false });
 
     return (
-      <ButtonToolbar>
-        <Button
-          className="btn-submit"
-          onClick={() => this.setState({ lgShow: true })}
-        >
-          Preview
-        </Button>
-        <Button
-          variant="dark"
-          className="ml-auto"
-          onClick={() => this.props.handleDelete(this.props.data.id)}
-        >
-          <i className="fas fa-trash-alt" />
-        </Button>
-        <Modal
-          size="lg"
-          show={this.state.lgShow}
-          onHide={lgClose}
-          aria-labelledby="example-modal-sizes-title-lg"
-        >
-          <Modal.Header closeButton className="header">
-            <Modal.Title id="example-modal-sizes-title-lg">
-              {this.props.data.recipeName}
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <div className="img-size">
-              <img src={this.props.data.imgUrl} />
-            </div>
-            <div className="mt-4">
-              <h5 className="text-center">
-                Meal type: {this.props.data.mealType} Level:{" "}
-                {this.props.data.level}
-              </h5>
-              <h5>Ingredients</h5>
-              <ReactMarkdown>{this.props.data.ingrediants}</ReactMarkdown>
-              <h5>Instructor</h5>
-              <ReactMarkdown>{this.props.data.description}</ReactMarkdown>
-            </div>
-          </Modal.Body>
-        </Modal>
-      </ButtonToolbar>
+      <div>
+        <ButtonToolbar>
+          <Button
+            className="btn-submit"
+            onClick={() => this.setState({ lgShow: true })}
+          >
+            Preview
+          </Button>
+          <Button
+            variant="dark"
+            className="ml-auto"
+            onClick={() => this.props.handleDelete(this.props.data.id)}
+          >
+            <i className="fas fa-trash-alt" />
+          </Button>
+          <Modal
+            size="lg"
+            show={this.state.lgShow}
+            onHide={lgClose}
+            aria-labelledby="example-modal-sizes-title-lg"
+          >
+            <Modal.Header closeButton className="header">
+              <Modal.Title id="example-modal-sizes-title-lg">
+                {this.props.data.recipeName}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <div className="img-size">
+                <img src={this.props.data.imgUrl} />
+              </div>
+              <div className="mt-4">
+                <h5 className="text-center">
+                  Meal type: {this.props.data.mealType} Level:{" "}
+                  {this.props.data.level}
+                </h5>
+                <div className="main">
+                  <h5>Ingredients</h5>
+                  {!this.state.edit ? (
+                    <ReactMarkdown source={this.props.data.ingrediants} />
+                  ) : (
+                    <Form.Group controlId="exampleForm.ControlTextarea1">
+                      <Form.Control
+                        as="textarea"
+                        name="ingrediants"
+                        rows="5"
+                        placeholder="Add your ingrediants. *Press Enter twice to add a new line*"
+                        value={this.state.ingrediants}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                  )}
+                  <h5>Instructor</h5>
+                  {!this.state.edit ? (
+                    <ReactMarkdown source={this.props.data.description} />
+                  ) : (
+                    <Form.Group controlId="exampleForm.ControlTextarea2">
+                      <Form.Control
+                        as="textarea"
+                        name="description"
+                        rows="5"
+                        placeholder="Add your description. *Press Enter twice to add a new line*"
+                        value={this.state.description}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Group>
+                  )}
+                </div>
+              </div>
+            </Modal.Body>
+            <Button onClick={this.handleClick}>Edit</Button>
+          </Modal>
+        </ButtonToolbar>
+      </div>
     );
   }
 }
